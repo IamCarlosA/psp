@@ -1,0 +1,26 @@
+<div style="padding-top: 20px;">
+   
+    <h1 class="d-none d-md-block mt-0 mb-3 text-center h00-mktg lh-condensed-ultra ">List bills</h1>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Employee</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Date</th>
+                <th scope="col">Total</th>
+                <th scope="col">View</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let facture of factures;">
+                <td>{{facture.employee}}</td>
+                <td>{{facture.customer}}</td>
+                <td>{{facture.createdAt}}</td>
+                <td>$ {{facture.total}}</td>
+                <td> <a class="btn btn-primary btn-block" [routerLink]="['/view-bills', facture._id]">open</a> </td>
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
