@@ -1,0 +1,61 @@
+
+<h1 class="d-none d-md-block mt-0 mb-3 text-center h00-mktg lh-condensed-ultra ">Bills</h1>
+
+
+<div class="row">
+    <div class=".col-6">
+        <h5><b>Employee:</b> {{facture.employee}}</h5> 
+    </div>
+</div>
+<div class="row">
+    <div class=".col-6">
+        <h5><b>Customer:</b> {{facture.customer}}</h5> 
+    </div>
+</div>
+<div class="row">
+    <div class=".col-6">
+        <h5><b>Date:</b> {{facture.createdAt}}</h5> 
+    </div>
+</div>
+
+<div style="padding-top: 20px;">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Quantify</th>
+                <th scope="col">Unit Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products;">
+                <td>{{product.name}}</td>
+                <td>{{product.quantify}}</td>
+                <td>$ {{product.price}}</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td> <b>Subtotal</b> </td>
+                <td><b>$ {{facture.subtotal}}</b></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <b>19% Tax</b> </td>
+                <td><b>$ {{facture.tax}}</b></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <b>Discount</b> </td>
+                <td><b>$ {{facture.discount}}</b></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td> <b>Total</b> </td>
+                <td><b>$ {{facture.total}}</b></td>
+            </tr>
+
+        </tbody>
+    </table>
+    <button (click)="delete()" class="btn btn-danger">DELETE</button>
+</div>

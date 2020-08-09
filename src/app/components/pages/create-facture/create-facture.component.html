@@ -1,0 +1,113 @@
+<div class=" mx-auto col-9" style="padding-top: 20px;">
+    <h1 class="d-none d-md-block mt-0 mb-3 text-center h00-mktg lh-condensed-ultra ">Create a bill</h1>
+    <form [formGroup]="createBillForm" (ngSubmit)="onSubmit()">
+        <!--Input nick name-->
+        <small class="text-right text-danger"
+            [class.d-none]="createBillForm.controls['employee'].valid || createBillForm.controls['employee'].untouched">
+            employee is required*
+        </small>
+        <div class="form-group input-group">
+            <input name="employee" class="form-control " formControlName="employee" placeholder="employee" type="text"
+                required>
+        </div>
+        <!-- form-group// -->
+
+        <!--Input nick name-->
+        <small class="text-right text-danger"
+            [class.d-none]="createBillForm.controls['customer'].valid || createBillForm.controls['customer'].untouched">
+            customer is required*
+        </small>
+        <div class="form-group input-group">
+            <input name="customer" class="form-control " formControlName="customer" placeholder="customer" type="text"
+                required>
+        </div>
+        <h3>List of Products</h3>
+        <form [formGroup]="productsBillForm" (ngSubmit)="add()">
+
+            <!--Input nick name-->
+            <small class="text-right text-danger"
+                [class.d-none]="productsBillForm.controls['name'].valid || productsBillForm.controls['name'].untouched">
+                name is required*
+            </small>
+            <div class="form-group input-group">
+                <input name="name" class="form-control " formControlName="name" placeholder="name" type="text" required>
+            </div>
+
+            <small class="text-right text-danger"
+                [class.d-none]="productsBillForm.controls['quantify'].valid || productsBillForm.controls['quantify'].untouched">
+                quantify is required*
+            </small>
+            <div class="form-group input-group">
+                <input name="quantify" class="form-control " formControlName="quantify" placeholder="quantify"
+                    type="number" required>
+            </div>
+
+
+            <small class="text-right text-danger"
+                [class.d-none]="productsBillForm.controls['price'].valid || productsBillForm.controls['price'].untouched">
+                price is required*
+            </small>
+            <div class="form-group input-group">
+                <input name="price" class="form-control " formControlName="price" placeholder="price" type="number"
+                    required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" [disabled]="productsBillForm.invalid" class="btn btn-primary"> ADD
+                </button>
+            </div> <!-- form-group// -->
+        </form>
+
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Quantify</th>
+                    <th scope="col">Unit Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of products;">
+                    <td>{{product.name}}</td>
+                    <td>{{product.quantify}}</td>
+                    <td>$ {{product.price}}</td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td> <b>Subtotal</b> </td>
+                    <td><b>$ {{subtotal}}</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> <b>19% Tax</b> </td>
+                    <td><b>$ {{tax}}</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> <b>Discount</b> </td>
+                    <td><b>$ {{discount}}</b></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> <b>Total</b> </td>
+                    <td><b>$ {{total}}</b></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="form-group">
+            <button type="submit" [disabled]="createBillForm.invalid" class="btn btn-primary btn-block"> PAY
+            </button>
+        </div>
+
+    </form>
+
+
+
+
+
+
+</div>
